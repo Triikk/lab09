@@ -12,27 +12,25 @@ import java.io.OutputStream;
  */
 public class Controller {
 
-    private File currentFile;
-
-    private static final File DEFAULT_FILE = new File(System.getProperty("user.home")
-                                                + File.separator
-                                                + "output.txt");
+    private File file = new File(System.getProperty("user.home")
+                                        + File.separator
+                                        + "output.txt");
 
     public void setFile(File file){
-        this.currentFile = file;
+        this.file = file;
     }
 
-    public File getFile(File file){
-        return this.currentFile;
+    public File getFile(){
+        return this.file;
     }
 
     public String getPath(){
-        return this.currentFile.getPath();
+        return this.file.getPath();
     }
 
     public void save(String string) throws IOException{
         try (final DataOutputStream outputStream = new DataOutputStream(
-            new FileOutputStream(DEFAULT_FILE))) {
+            new FileOutputStream(this.file))) {
                 outputStream.writeUTF(string);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
