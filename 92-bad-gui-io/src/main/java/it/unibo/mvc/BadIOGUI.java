@@ -44,7 +44,9 @@ public class BadIOGUI {
         final JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.X_AXIS));
         final JButton write = new JButton("Write on file");
+        final JButton read = new JButton("Read");
         centerPanel.add(write);
+        centerPanel.add(read);
         canvas.add(centerPanel, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,6 +70,12 @@ public class BadIOGUI {
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
+        });
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.println("read action listener");
+            }            
         });
     }
 
