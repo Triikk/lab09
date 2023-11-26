@@ -74,8 +74,15 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println("read action listener");
-            }            
+                try {
+                    List<String> lines = Files.readAllLines(new File(PATH).toPath());
+                    for(String line : lines){
+                        System.out.println(line);
+                    }
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }         
         });
     }
 
